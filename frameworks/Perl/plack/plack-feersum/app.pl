@@ -4,7 +4,7 @@ use Cwd 'getcwd';
 
 my $cpus = Unix::Processors->new->max_online;
 
-my @cmd = ([qw'plackup -s Feersum -E production --listen localhost:8080 --pre-fork=', $cpus, qw'-a app.psgi'],
+my @cmd = ([qw'plackup -s Feersum -E production --listen :8080 --pre-fork=', $cpus, qw'-a app.psgi'],
            [qw'nginx -c nginx.conf -p', getcwd]);
 
 my @child;
