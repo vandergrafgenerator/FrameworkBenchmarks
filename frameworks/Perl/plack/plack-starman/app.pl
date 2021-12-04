@@ -4,7 +4,7 @@ use Cwd 'getcwd';
 
 my $cpus = Unix::Processors->new->max_online;
 
-my @cmd = ([qw'plackup -s Starman -E production --port 8080 --workers=', $cpus, qw'-a app.psgi'],
+my @cmd = ([qw'plackup -s Starman -E production --listen /dev/shm/app.sock --workers=', $cpus, qw'-a app.psgi'],
            [qw'nginx -c nginx.conf -p', getcwd]);
 
 my @child;
